@@ -1,1 +1,30 @@
+USE master;
+GO
 
+-- If the database already exists, drop it safely
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')
+BEGIN 
+    -- Force single-user mode and rollback active connections 
+    ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+
+    -- Remove the existing database
+    DROP DATABASE DataWarehouse;
+END;
+GO
+
+-- Create a fresh instance of the DataWarehouse database
+CREATE DATABASE DataWarehouse;
+GO
+
+USE DataWarehouse;
+GO
+
+-- Create schemas to organize data layers
+CREATE SCHEMA bronze;   -- Raw/ingested data
+GO
+
+CREATE SCHEMA silver;   -- Cleaned/transformed data
+GO
+
+CREATE SCHEMA gold;     -- Curated/consumption-ready data
+GO
