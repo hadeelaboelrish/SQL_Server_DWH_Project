@@ -7,7 +7,7 @@ BEGIN
     -- Force single-user mode and rollback active connections 
     ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
 
-    -- Remove the existing database
+    -- Remove the existing database 
     DROP DATABASE DataWarehouse;
 END;
 GO
