@@ -1,3 +1,5 @@
+-- Cleaning up data for crm_cust_info table
+
 INSERT INTO silver.crm_cust_info (
   cst_id,
   cst_key,
@@ -29,3 +31,4 @@ FROM (
   WHERE cst_id IS NOT NULL)t
 WHERE flag_last = 1;
 
+-- Cleaning up data for crm_prd_info table
